@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuroWeb - Synaptic Action Potential & Neural Dynamics Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="neuro-wrapper">
+    <canvas id="neuro-canvas"></canvas>
+
+    <!-- Top Telemetry & Oscilloscope -->
+    <header class="hud-top">
+      <div class="brand">
+        <span class="synapse-dot"></span>
+        <h1>NEUROWEB // <span class="sub">SYNAPTIC NETWORK</span></h1>
+      </div>
+      <div class="eeg-panel">
+        <span class="eeg-label">EEG RHYTHM: <strong id="eeg-rhythm">ALPHA (10 Hz)</strong></span>
+        <canvas id="eeg-canvas" width="180" height="32"></canvas>
+      </div>
+      <div class="stats-badge">
+        <span>Neurons: <strong id="neuron-count">0</strong></span>
+        <span>Spike Rate: <strong id="hz-count">0 Hz</strong></span>
+      </div>
+    </header>
+
+    <!-- Interactive Control Deck -->
+    <aside class="control-deck">
+      <div class="deck-group">
+        <label>NEUROMODULATION (BATH)</label>
+        <div class="pill-grid">
+          <button class="pill-btn active" data-mod="neutral">Balanced</button>
+          <button class="pill-btn" data-mod="dopamine">✨ Dopamine</button>
+          <button class="pill-btn" data-mod="gaba">🛡️ GABA (Inhibit)</button>
+          <button class="pill-btn" data-mod="glutamate">⚡ Glutamate</button>
+        </div>
+      </div>
+
+      <div class="deck-group">
+        <div class="label-row">
+          <label for="threshold-slider">Excitability Threshold</label>
+          <span class="badge" id="thresh-val">-55 mV</span>
+        </div>
+        <input type="range" id="threshold-slider" min="-65" max="-45" step="1" value="-55" />
+      </div>
+
+      <div class="deck-group">
+        <div class="label-row">
+          <label for="plasticity-slider">Synaptic Plasticity (STDP)</label>
+          <span class="badge" id="plasticity-val">Normal</span>
+        </div>
+        <input type="range" id="plasticity-slider" min="0.2" max="2.0" step="0.2" value="1.0" />
+      </div>
+
+      <div class="deck-group">
+        <label>INTERACTION TOOL</label>
+        <div class="tool-grid">
+          <button class="tool-btn active" data-tool="stim">⚡ Electrode</button>
+          <button class="tool-btn" data-tool="add">➕ Seed Neuron</button>
+          <button class="tool-btn" data-tool="cut">✂️ Axon Scalpel</button>
+        </div>
+      </div>
+
+      <div class="deck-group actions">
+        <button class="btn surge-btn" id="cascade-btn">⚡ Synchronous Action Potential</button>
+        <button class="btn reset-btn" id="reconnect-btn">↺ Rewire Cortex</button>
+      </div>
+
+      <footer class="deck-hint">
+        <p>🖱️ <strong>Click & drag:</strong> Stimulate somatic action potentials, slice axon pathways, or watch Hebbian learning strengthen frequently fired synapses.</p>
+      </footer>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
